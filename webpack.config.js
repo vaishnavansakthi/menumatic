@@ -1,10 +1,12 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const isProduction = process.env.NODE_ENV === "production";
 module.exports = {
   entry: "./src/index.js", // Entry point of your application
   output: {
     filename: "bundle.js", // Output bundle file name
     path: isProduction ? path.resolve(__dirname, "build") : path.resolve(__dirname, "public"), // Output directory changed from 'dist' to 'public'
+    clean: true, // Clean the output directory before emit
   },
   module: {
     rules: [
@@ -36,6 +38,12 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "public", "index.html"),
+      filename: "index.html",
+    }),
+  ],
   devServer: {
     static: {
       directory: path.join(__dirname, "public"),
