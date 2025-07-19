@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const isProduction = process.env.NODE_ENV === "production";
 module.exports = {
   entry: "./src/index.js", // Entry point of your application
@@ -42,6 +43,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
       filename: "index.html",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'public'),
+          to: path.resolve(__dirname, isProduction ? 'build' : 'public'),
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+        },
+      ],
     }),
   ],
   devServer: {
