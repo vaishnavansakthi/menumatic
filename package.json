@@ -16,6 +16,7 @@
     "start": "webpack serve --mode development --open",
     "build": "NODE_ENV=production webpack --mode production",
     "test": "react-scripts test --watchAll=false",
+    "test:coverage": "react-scripts test --coverage --watchAll=false --coverageThreshold='{\"global\":{\"branches\":85,\"functions\":85,\"lines\":85,\"statements\":85}}'",
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "commit": "git-cz"
