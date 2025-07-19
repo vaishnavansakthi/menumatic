@@ -1,7 +1,8 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const isProduction = process.env.NODE_ENV === "production";
+/* eslint-disable no-undef */
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
+const isProduction = process.env.NODE_ENV === "production"
 module.exports = {
   entry: "./src/index.js", // Entry point of your application
   output: {
@@ -20,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.svg$/i,
@@ -41,6 +42,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      // eslint-disable-next-line no-undef
       template: path.resolve(__dirname, "public", "index.html"),
       filename: "index.html",
     }),
@@ -65,4 +67,4 @@ module.exports = {
     port: 3000, // Port for the development server
     open: true, // Open the default web browser when the server starts
   },
-};
+}
