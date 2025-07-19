@@ -1,0 +1,47 @@
+const path = require("path");
+module.exports = {
+  entry: "./src/index.js", // Entry point of your application
+  output: {
+    filename: "bundle.js", // Output bundle file name
+    path: path.resolve(__dirname, "public"), // Output directory changed from 'dist' to 'public'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: 'assets',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
+      publicPath: '/',
+    },
+    historyApiFallback: true,
+    port: 3000, // Port for the development server
+    open: true, // Open the default web browser when the server starts
+  },
+};
