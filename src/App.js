@@ -1,5 +1,5 @@
-import React from "react";
-import './App.css';
+import React from 'react'
+import './App.css'
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <h1>hello</h1>
       <img src="/logo192.png" alt="React Logo" />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
