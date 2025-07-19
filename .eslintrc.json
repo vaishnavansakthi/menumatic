@@ -18,5 +18,16 @@
   "rules": {
     "react/prop-types": "off",
     "semi": ["error", "never"]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/index.css"],
+      "rules": {
+        "no-unused-expressions": "off",
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "no-irregular-whitespace": "off"
+      }
+    }
+  ]
 }
