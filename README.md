@@ -1,6 +1,6 @@
 # Menumatic
 
-A React project with Webpack, ESLint, Prettier, Husky, Commitizen, and automated commit quality checks.
+A React project with Webpack, Tailwind CSS, ESLint, Prettier, Husky, Commitizen, and automated commit quality checks.
 
 ## Project Setup
 
@@ -24,6 +24,29 @@ npm run build
 ### 4. Serve production build locally
 ```sh
 npx serve build
+```
+
+## Tailwind CSS Usage
+
+This project uses [Tailwind CSS v4+](https://tailwindcss.com/) for utility-first styling.
+
+- Tailwind is configured via `tailwind.config.js` and integrated with PostCSS and Webpack.
+- The main stylesheet is `src/index.css`, which includes:
+  ```css
+  @import "tailwindcss/preflight";
+  @tailwind utilities;
+  ```
+- Use Tailwind utility classes directly in your React components for styling.
+- To customize the design system (colors, fonts, etc.), edit `tailwind.config.js`.
+- For custom CSS, add it below the Tailwind imports in `src/index.css`.
+- When adding new components or pages, ensure their file paths are included in the `content` array in `tailwind.config.js` for full utility support.
+
+Example usage in a component:
+```jsx
+<div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg shadow-lg">
+  <h1 className="text-4xl font-bold mb-4">Menumatic is Under Creative Construction</h1>
+  {/* ... */}
+</div>
 ```
 
 ## Code Quality & Automation
