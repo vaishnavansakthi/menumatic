@@ -1,9 +1,10 @@
 const path = require("path");
+const isProduction = process.env.NODE_ENV === "production";
 module.exports = {
   entry: "./src/index.js", // Entry point of your application
   output: {
     filename: "bundle.js", // Output bundle file name
-    path: path.resolve(__dirname, "public"), // Output directory changed from 'dist' to 'public'
+    path: isProduction ? path.resolve(__dirname, "build") : path.resolve(__dirname, "public"), // Output directory changed from 'dist' to 'public'
   },
   module: {
     rules: [
