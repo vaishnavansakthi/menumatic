@@ -15,9 +15,10 @@
   "scripts": {
     "start": "webpack serve --mode development --open",
     "build": "NODE_ENV=production webpack --mode production",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "git-cz"
   },
   "eslintConfig": {
     "extends": [
@@ -39,9 +40,13 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.27.1",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "commitizen": "^4.3.1",
     "copy-webpack-plugin": "^13.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.1",
     "file-loader": "^6.2.0",
     "husky": "^8.0.0",
@@ -57,5 +62,10 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
